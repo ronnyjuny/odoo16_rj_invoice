@@ -86,8 +86,8 @@
                         <thead>
                             <tr>
                                 <th style="width:4%;">No</th>
-                                <th style="width:51%;">Nama Barang</th>
-                                <th style="width:10%;">Quantity</th>
+                                <th style="width:50%;">Nama Barang</th>
+                                <th style="width:11%;">Quantity</th>
                                 <th style="width:11%;">Harga</th>
                                 <th style="width:11%;">Discount</th>
                                 <th style="width:13%;">Jumlah</th>
@@ -120,7 +120,7 @@
                                     <!-- Note lines -->
                                     <t t-foreach="invoice.invoice_line_ids.filtered(lambda l: not l.product_id and l.sequence == line.sequence + 1)" t-as="note">
                                         <tr>
-                                            <td colspan="5" style="font-style:italic; padding-left:10px;">
+                                            <td colspan="6" style="font-style:italic; padding-left:10px;">
                                                 <t t-raw="note.name.replace('\n','&lt;br/&gt;')"/>
                                             </td>
                                         </tr>
