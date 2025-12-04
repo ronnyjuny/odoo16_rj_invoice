@@ -86,9 +86,10 @@
                         <thead>
                             <tr>
                                 <th style="width:4%;">No</th>
-                                <th style="width:62%;">Nama Barang</th>
+                                <th style="width:51%;">Nama Barang</th>
                                 <th style="width:10%;">Quantity</th>
                                 <th style="width:11%;">Harga</th>
+                                <th style="width:11%;">Discount</th>
                                 <th style="width:13%;">Jumlah</th>
                             </tr>
                         </thead>
@@ -107,6 +108,9 @@
                                         </td>
                                         <td style="text-align:right;">
                                             <t t-esc="'{:,}'.format(int(line.price_unit or 0)).replace(',', '.')"/>
+                                        </td>
+                                        <td style="text-align:right;">
+                                            <t t-esc="'{:,}'.format(int(line.invoice_total_discount or 0)).replace(',', '.')"/>
                                         </td>
                                         <td style="text-align:right;">
                                             <t t-esc="'{:,}'.format(int(line.price_subtotal or 0)).replace(',', '.')"/>
