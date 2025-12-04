@@ -36,7 +36,7 @@
                                 <table class="no-border" style="font-size: 11pt;">
                                     <div style="font-size: 13pt;"> <strong> <t t-esc="invoice.company_id.name"/> </strong> </div>
                                     <div><t t-esc="invoice.company_id.street or ''"/></div>
-                                    <div><t t-esc="invoice.company_id.phone or ''"/></div>
+                                    <div>Telp: <t t-esc="invoice.company_id.phone or ''"/></div>
                                 </table>
                             </td>
 
