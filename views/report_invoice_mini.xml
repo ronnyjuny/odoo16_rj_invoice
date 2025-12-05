@@ -131,34 +131,16 @@
                         </tbody>
                     </table>
 
-                    <!-- TOTAL, AMOUNT IN WORDS, DAN TANDA TANGAN -->
                     <table class="no-border" style="margin-top: 10px; font-size: 11pt; width: 100%;">
                         <tr>
-                            <!-- Kolom kiri -->
                             <td style="width: 70%; vertical-align: top;">
-                                
-                                <!-- <div style="margin-bottom:10px;">
-                                    <div style="border:1px solid #000; padding:5px; font-size:11pt; text-align:center; width:85%;">
-                                        BARANG YANG TELAH DIBELI TIDAK DAPAT DITUKAR / DIKEMBALIKAN
-                                    </div>
-                                </div> -->
-                                
-                                <!-- Amount in Words (perlu custom field di Odoo 16) -->
-                                <!-- <t t-if="invoice.amount_total">
-                                    <div style="font-size: 11pt; margin-bottom: 10px;">
-                                        <strong>Terbilang:</strong>
-                                        <t t-esc="invoice.currency_id.amount_to_text(invoice.amount_total)"/>
-                                    </div>
-                                </t> -->
-                                
-                                <!-- Narration -->
+
                                 <t t-if="invoice.narration">
                                     <div style="font-size: 11pt; margin-bottom: 10px;">
                                         <span t-raw="invoice.narration"/>
                                     </div>
                                 </t>
                             
-                                <!-- Tanda tangan -->
                                 <table class="no-border" style="width:100%; text-align:center;">
                                     <tr>
                                         <td>Hormat Kami,</td>
@@ -172,11 +154,10 @@
                                 </table>
                             </td>
 
-                            <!-- Kolom kanan: Total -->
                             <td style="width: 30%; vertical-align: top;">
                                 <table style="width:100%; border-collapse:collapse;">
 
-                                    <t t-if="invoice.dpp and invoice.dpp > 0">
+                                    <t t-if="invoice.dpp and int(invoice.dpp) != int(invoice.amount_untaxed)">
                                         <tr>
                                             <td style="border:1px solid #000; font-weight:bold; text-align:right;">Total Amount:</td>
                                             <td style="border:1px solid #000; text-align:right; font-weight:bold;">
@@ -220,7 +201,6 @@
                         </tr>
                     </table>
 
-
                     <hr style="border: 0; border-top: 1px solid #000; margin: 10px 0; width:100%;" />
 
                     <t t-set="company" t-value="invoice.company_id.name"/>
@@ -229,14 +209,13 @@
                             <table class="no-border" style="width: 100%;">
                                 <tr>
                                     <td style="width:50%; vertical-align: top; text-align:left;">
-                                        <div><strong>Rekening Pembayaran Ban Mobil</strong></div>
+                                        <div>Rekening Pembayaran Ban Mobil</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
-                                        <div>BCA: 8615-69-8888</div>
-                                        <div>Mandiri: 148-00-2722777-9</div>
+                                        <div>BCA: 8615-69-8888 / Mandiri: 148-00-2722777-9</div>
                                     </td>
 
-                                    <td style="width:50%; vertical-align: top; text-align:right;">
-                                        <div><strong>Rekening Pembayaran Ban Motor</strong></div>
+                                    <td style="width:50%; vertical-align: top; text-align:left;">
+                                        <div>Rekening Pembayaran Ban Motor</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
                                         <div>BCA: 0272-05-2369</div>
                                     </td>
