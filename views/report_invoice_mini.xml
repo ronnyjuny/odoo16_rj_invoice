@@ -59,7 +59,7 @@
                             </td>
                             <td class="no-border" style="width: 40%; vertical-align: top;">
                                 <t t-if="invoice.sale_order_id.sale_order_type_id">
-                                    <div style="font-size: 13pt; bold;">
+                                    <div style="font-size: 13pt;">
                                         <t t-esc="invoice.sale_order_id.sale_order_type_id.name"/>
                                     </div>
                                 </t>
