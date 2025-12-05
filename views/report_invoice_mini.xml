@@ -157,6 +157,30 @@
                                         <span t-raw="invoice.narration"/>
                                     </div>
                                 </t>
+                                
+                                <!-- REKENING PEMBAYARAN -->
+                                <div style="margin-top:15px; font-size:11pt; white-space:pre-wrap; font-family:Consolas, monospace;">
+                                    <t t-if="invoice.company_id.name == 'PT. TEGUH JAYA ABADI SENTOSA'">
+                                        <div><strong>Rekening Pembayaran Ban Mobil</strong>                               <strong>Rekening Pembayaran Ban Motor</strong></div>
+                                        <div>PT. TEGUH JAYA ABADI SENTOSA                                                 PT. TEGUH JAYA ABADI SENTOSA</div>
+                                        <div>BCA: 8615-69-8888 / Mandiri: 148-00-2722777-9                                BCA: 0272-05-2369</div>
+                                    </t>
+
+                                    <t t-elif="invoice.company_id.name == 'PT. TEGUH PERKASA KARYA PERDANA'">
+                                        <div><strong>Rekening A.N: PT. TEGUH PERKASA KARYA PERDANA</strong></div>
+                                        <div>BCA: 191-0771-988  /  BRI: 012101-0025-393-00</div>
+                                    </t>
+
+                                    <t t-elif="invoice.company_id.name == 'PT. TEGUH KALTARA PERKASA'">
+                                        <div><strong>Rekening A.N: PT. TEGUH KALTARA PERKASA</strong></div>
+                                        <div>BCA: 780-520-8881 / Mandiri: 148-002-2285-558</div>
+                                    </t>
+
+                                    <t t-elif="invoice.company_id.name == 'PT. TEGUH GEMILANG OTOMOTIF'">
+                                        <div><strong>Rekening A.N: PT. TEGUH GEMILANG OTOMOTIF</strong></div>
+                                        <div>BCA: 191-8993-389</div>
+                                    </t>
+                                </div>
 
                                 <!-- Tanda tangan -->
                                 <table class="no-border" style="width:100%; text-align:center;">
