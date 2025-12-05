@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Report Action untuk Odoo 16 -->
     <report
         id="action_report_invoice_mini"
-        string="Invoice A5"
+        string="Invoice Custom"
         model="account.move"
         report_type="qweb-pdf"
         name="rj_invoice.report_invoice_mini_document"

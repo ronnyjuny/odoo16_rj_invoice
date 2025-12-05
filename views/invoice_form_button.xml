@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Tombol cetak langsung di form Customer Invoice -->
     <record id="view_move_form_inherit_invoice_a5" model="ir.ui.view">
         <field name="name">account.move.form.invoice.a5.button</field>
         <field name="model">account.move</field>
@@ -8,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button name="%(rj_invoice.action_report_invoice_mini)d"
-                        string="A5 Inv"
+                        string="Custom Print"
                         type="action"
                         class="btn-secondary"
                         icon="fa-print"
