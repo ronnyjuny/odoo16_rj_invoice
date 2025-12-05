@@ -57,7 +57,7 @@
                                     <div>Email: <t t-esc="invoice.company_id.email"/></div>
                                 </t>
                             </td>
-                            <td class="no-border" style="width: 40%; vertical-align: top;">
+                            <td class="no-border" style="width: 40%; vertical-align: top; text-align: right;">
                                 <t t-if="
                                     invoice.invoice_line_ids 
                                     and invoice.invoice_line_ids[0].sale_line_ids 
