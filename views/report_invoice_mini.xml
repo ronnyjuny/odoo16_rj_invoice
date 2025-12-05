@@ -29,41 +29,68 @@
 
                 <div class="page" style="font-size: 10pt; line-height: 1.3;">
                     <table class="no-border" style="font-size: 11pt;">
-                        <tr><td class="no-border">
+                        <tr>
+                            <td class="no-border" style="width: 50%;">
+                                <t t-if="invoice.company_id.name">
+                                    <div style="font-size: 13pt;">
+                                        <strong><t t-esc="invoice.company_id.name"/></strong>
+                                    </div>
+                                </t>
 
-                            <t t-if="invoice.company_id.name">
-                                <div style="font-size: 13pt;">
-                                    <strong><t t-esc="invoice.company_id.name"/></strong>
-                                </div>
-                            </t>
+                                <t t-if="invoice.company_id.street">
+                                    <div><t t-esc="invoice.company_id.street"/></div>
+                                </t>
 
-                            <t t-if="invoice.company_id.street">
-                                <div><t t-esc="invoice.company_id.street"/></div>
-                            </t>
+                                <t t-if="invoice.company_id.street2">
+                                    <div><t t-esc="invoice.company_id.street2"/></div>
+                                </t>
 
-                            <t t-if="invoice.company_id.street2">
-                                <div><t t-esc="invoice.company_id.street2"/></div>
-                            </t>
+                                <t t-if="invoice.company_id.city or invoice.company_id.state_id">
+                                    <div>
+                                        <t t-esc="'{}, {}'.format(invoice.company_id.city or '', invoice.company_id.state_id.name or '')"/>
+                                    </div>
+                                </t>
+                                <t t-if="invoice.company_id.vat">
+                                    <div>NPWP: <t t-esc="invoice.company_id.vat"/></div>
+                                </t>
+                                <t t-if="invoice.company_id.phone">
+                                    <div>Telp: <t t-esc="invoice.company_id.phone"/></div>
+                                </t>
+                                <t t-if="invoice.company_id.email">
+                                    <div>Email: <t t-esc="invoice.company_id.email"/></div>
+                                </t>
+                            </td>
+                            <td class="no-border" style="width: 50%;">
+                                <t t-if="invoice.company_id.name">
+                                    <div style="font-size: 13pt;">
+                                        <strong><t t-esc="invoice.company_id.name"/></strong>
+                                    </div>
+                                </t>
 
-                            <t t-if="invoice.company_id.city or invoice.company_id.state_id">
-                                <div>
-                                    <t t-esc="'{}, {}'.format(invoice.company_id.city or '', invoice.company_id.state_id.name or '')"/>
-                                </div>
-                            </t>
+                                <t t-if="invoice.company_id.street">
+                                    <div><t t-esc="invoice.company_id.street"/></div>
+                                </t>
 
-                            <t t-if="invoice.company_id.vat">
-                                <div>NPWP: <t t-esc="invoice.company_id.vat"/></div>
-                            </t>
+                                <t t-if="invoice.company_id.street2">
+                                    <div><t t-esc="invoice.company_id.street2"/></div>
+                                </t>
 
-                            <t t-if="invoice.company_id.phone">
-                                <div>Telp: <t t-esc="invoice.company_id.phone"/></div>
-                            </t>
-
-                            <t t-if="invoice.company_id.email">
-                                <div>Email: <t t-esc="invoice.company_id.email"/></div>
-                            </t>
-
-                        </td></tr>
+                                <t t-if="invoice.company_id.city or invoice.company_id.state_id">
+                                    <div>
+                                        <t t-esc="'{}, {}'.format(invoice.company_id.city or '', invoice.company_id.state_id.name or '')"/>
+                                    </div>
+                                </t>
+                                <t t-if="invoice.company_id.vat">
+                                    <div>NPWP: <t t-esc="invoice.company_id.vat"/></div>
+                                </t>
+                                <t t-if="invoice.company_id.phone">
+                                    <div>Telp: <t t-esc="invoice.company_id.phone"/></div>
+                                </t>
+                                <t t-if="invoice.company_id.email">
+                                    <div>Email: <t t-esc="invoice.company_id.email"/></div>
+                                </t>
+                            </td>
+                        </tr>
                     </table>
                     <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0; width:100%;" />
                     <table class="no-border" style="margin-bottom: 15px;">
