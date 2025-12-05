@@ -220,6 +220,7 @@
                         </tr>
                     </table>
 
+                    <hr style="border: 0; border-top: 1px solid #000; margin: 10px 0; width:100%;" />
                     <div style="font-size:9pt; font-family:Consolas, monospace;">
                         <t t-if="invoice.company_id.name == 'PT. TEGUH JAYA ABADI SENTOSA'">
                             <table class="no-border" style="width: 100%;">
