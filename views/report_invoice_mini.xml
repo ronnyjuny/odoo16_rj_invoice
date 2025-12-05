@@ -64,11 +64,14 @@
                                     and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id
                                 ">
                                     <div style="font-size: 13pt;">
-                                        <t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/>
+                                    <strong><t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/></strong>
                                     </div>
                                 </t>
-
-                                <div><strong>Kepada Yth:</strong></div>
+                                <t t-if="invoice.custom_sequence">
+                                    <div style="font-size: 15pt;">
+                                        <t t-esc="invoice.custom_sequence"/>
+                                    </div>
+                                </t>
                             </td>
                         </tr>
                     </table>
