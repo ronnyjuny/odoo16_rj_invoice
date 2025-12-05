@@ -114,11 +114,9 @@
                                         <td style="text-align:right;">
                                             <t t-esc="'{:,}'.format(int(line.invoice_total_discount or 0)).replace(',', '.')"/>
                                         </td>
-                                        <!-- <td style="text-align:right;">
-                                            <t t-esc="'{:,}'.format(int(line.price_subtotal or 0)).replace(',', '.')"/>
-                                        </td> -->
                                         <td style="text-align:right;">
-                                            <t t-esc="'{:,.2f}'.format(line.price_subtotal or 0).replace(',', '.')"/>
+                                            <!-- <t t-esc="'{:,}'.format(int(line.price_subtotal or 0)).replace(',', '.')"/> -->
+                                            <t t-esc="'{:,}'.format(int(line.subtotal or 0)).replace(',', '.')"/>
                                         </td>
                                     </tr>
                                     <!-- Note lines -->
