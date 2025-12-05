@@ -329,17 +329,29 @@
                     <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0; width:100%;" />
 
                     <t t-set="company" t-value="invoice.company_id.name"/>
-                    <div style="font-size:9pt; font-family:Consolas, monospace; width:100%;">    
+
+                    <t t-set="order_type" t-value="
+                        invoice.invoice_line_ids
+                        and invoice.invoice_line_ids[0].sale_line_ids
+                        and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name
+                        or ''
+                    "/>
+
+                    <div style="font-size:9pt; font-family:Consolas, monospace; width:100%; margin-top:5px;">
+
+                        <!-- ======================================== -->
+                        <!-- PT. TEGUH JAYA ABADI SENTOSA (2 kolom)   -->
+                        <!-- ======================================== -->
                         <t t-if="company == 'PT. TEGUH JAYA ABADI SENTOSA'">
-                            <table class="no-border" style="width: 100%;">
+                            <table class="no-border" style="width:100%;">
                                 <tr>
-                                    <td style="width:50%; vertical-align: top; text-align:left;">
+                                    <td style="width:50%; text-align:left;">
                                         <div>Rekening Pembayaran Ban Mobil</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
                                         <div>BCA: 8615-69-8888 / Mandiri: 148-00-2722777-9</div>
                                     </td>
 
-                                    <td style="width:50%; vertical-align: top; text-align:left;">
+                                    <td style="width:50%; text-align:left;">
                                         <div>Rekening Pembayaran Ban Motor</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
                                         <div>BCA: 0272-05-2369</div>
@@ -347,6 +359,10 @@
                                 </tr>
                             </table>
                         </t>
+
+                        <!-- ======================================== -->
+                        <!-- PT. PERUSAHAAN LAIN TANPA ORDER TYPE     -->
+                        <!-- ======================================== -->
 
                         <t t-if="company == 'PT. TEGUH PERKASA KARYA PERDANA'">
                             <div style="text-align:right;">
@@ -368,7 +384,48 @@
                                 <div>BCA: 191-8993-389</div>
                             </div>
                         </t>
+
+                        <!-- ======================================== -->
+                        <!--  PT. TEGUH PRIMA SENTOSA (ORDER TYPE)    -->
+                        <!-- ======================================== -->
+
+                        <t t-if="company == 'PT. TEGUH PRIMA SENTOSA'">
+
+                            <!-- Tampilkan rekening hanya jika ORDER TYPE ADA -->
+                            <t t-if="order_type">
+
+                                <!-- Samarinda -->
+                                <t t-if="order_type == 'Samarinda'">
+                                    <div><strong>Rekening A.N: PT. TEGUH PRIMA SENTOSA</strong></div>
+                                    <div>Bank BCA: 5135-6767-88</div>
+                                </t>
+
+                                <!-- Balikpapan -->
+                                <t t-elif="order_type == 'Balikpapan'">
+                                    <div><strong>Rekening A.N: PT. TEGUH PRIMA SENTOSA</strong></div>
+                                    <div>Bank BCA: 5135-77-8181</div>
+                                </t>
+
+                                <!-- Malinau -->
+                                <t t-elif="order_type == 'Malinau'">
+                                    <div><strong>Rekening A.N: PT. TEGUH PRIMA SENTOSA</strong></div>
+                                    <div>Bank Mandiri: 14800-889-25-899</div>
+                                </t>
+
+                                <!-- Tarakan -->
+                                <t t-elif="order_type == 'Tarakan'">
+                                    <div><strong>Rekening A.N: PT. TEGUH PRIMA SENTOSA</strong></div>
+                                    <div>Bank Mandiri: 14800-889-25-899</div>
+                                </t>
+
+                            </t>
+
+                            <!-- Jika TIDAK ADA ORDER TYPE → JANGAN TAMPILKAN APA-APA -->
+                            <!-- (Dikosongkan seluruhnya, tanpa default rekening) -->
+                        </t>
+
                     </div>
+
                 </div>
             </t>
         </t>
