@@ -134,13 +134,6 @@
                     <table class="no-border" style="margin-top: 10px; font-size: 11pt; width: 100%;">
                         <tr>
                             <td style="width: 70%; vertical-align: top;">
-
-                                <t t-if="invoice.narration">
-                                    <div style="font-size: 11pt; margin-bottom: 10px;">
-                                        <span t-raw="invoice.narration"/>
-                                    </div>
-                                </t>
-                            
                                 <table class="no-border" style="width:100%; text-align:center;">
                                     <tr>
                                         <td>Hormat Kami,</td>
@@ -200,7 +193,13 @@
                             </td>
                         </tr>
                     </table>
-
+                    <div>
+                        <t t-if="invoice.narration">
+                            <div style="font-size: 11pt; margin-bottom: 10px;">
+                                <span t-raw="invoice.narration"/>
+                            </div>
+                        </t>
+                    </div>
                     <hr style="border: 0; border-top: 1px solid #000; margin: 10px 0; width:100%;" />
 
                     <t t-set="company" t-value="invoice.company_id.name"/>
