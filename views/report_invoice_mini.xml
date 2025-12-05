@@ -115,7 +115,6 @@
                                             <t t-esc="'{:,}'.format(int(line.invoice_total_discount or 0)).replace(',', '.')"/>
                                         </td>
                                         <td style="text-align:right;">
-                                            <!-- <t t-esc="'{:,}'.format(int(line.price_subtotal or 0)).replace(',', '.')"/> -->
                                             <t t-esc="'{:,}'.format(int(line.subtotal or 0)).replace(',', '.')"/>
                                         </td>
                                     </tr>
@@ -135,6 +134,12 @@
                     <table class="no-border" style="margin-top: 7px; font-size: 11pt; width: 100%;">
                         <tr>
                             <td style="width: 70%; vertical-align: top;">
+                                <t t-if="invoice.number_to_words">
+                                    <div style="font-size: 11pt; margin-bottom: 10px;">
+                                        <strong>Terbilang:</strong>
+                                        <t t-esc="invoice.number_to_words"/>
+                                    </div>
+                                </t>
                                 <table class="no-border" style="width:100%; text-align:center;">
                                     <tr>
                                         <td>Hormat Kami,</td>
