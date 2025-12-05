@@ -60,10 +60,6 @@
                                     <div>NPWP: <t t-esc="invoice.company_id.vat"/></div>
                                 </t>
 
-                                <!-- ========================= -->
-                                <!--           CONTACT         -->
-                                <!-- ========================= -->
-
                                 <t t-set="order_type" t-value="
                                     invoice.invoice_line_ids
                                     and invoice.invoice_line_ids[0].sale_line_ids
@@ -126,29 +122,31 @@
 
                             </td>
 
-                            <!-- ORDER TYPE + SEQUENCE RATA KANAN -->
                             <td class="no-border" style="width: 40%; vertical-align: top; text-align: right;">
-
                                 <!-- Order Type -->
                                 <t t-if="
                                     invoice.invoice_line_ids 
                                     and invoice.invoice_line_ids[0].sale_line_ids 
                                     and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id
                                 ">
-                                    <div style="font-size: 13pt;">
+                                    <div style="font-size: 12pt;">
                                         <strong>
                                             <t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/>
                                         </strong>
                                     </div>
                                 </t>
-
                                 <!-- Nomor Sequence -->
                                 <t t-if="invoice.custom_sequence">
-                                    <div style="font-size: 15pt;">
+                                    <div style="font-size: 12pt;">
                                         <t t-esc="invoice.custom_sequence"/>
                                     </div>
                                 </t>
-
+                                <!-- No Invoice -->
+                                <t t-if="invoice.name">
+                                    <div style="font-size: 11pt;">
+                                        <t t-esc="invoice.name"/>
+                                    </div>
+                                </t>
                             </td>
                         </tr>
                     </table>
