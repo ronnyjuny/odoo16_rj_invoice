@@ -138,7 +138,7 @@
                                 <!-- Nomor Sequence -->
                                 <t t-if="invoice.custom_sequence">
                                     <div style="font-size: 12pt;">
-                                        No. SEQ: <t t-esc="invoice.custom_sequence"/>
+                                        <t t-esc="invoice.custom_sequence"/>
                                     </div>
                                 </t>
                                 <!-- No Invoice -->
@@ -162,35 +162,7 @@
                     </table>
 
                     <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0;" />
-                    <div>
-                        <table class="no-border" style="font-size: 11pt;">
-                            <div><strong>Kepada Yth:</strong></div>
-                            <div><t t-esc="invoice.partner_id.name or ''"/></div>
-                            <div><t t-esc="invoice.partner_id.street or ''"/></div>
-                            <t t-if="invoice.partner_id.street2">
-                                <div><t t-esc="invoice.partner_id.street2"/></div>
-                            </t>
-                            <t t-if="invoice.partner_id.city or invoice.partner_id.state_id or invoice.partner_id.zip">
-                                <div>
-                                    <t t-set="parts" t-value="[
-                                        invoice.partner_id.city or '',
-                                        invoice.partner_id.state_id.name if invoice.partner_id.state_id else '',
-                                        invoice.partner_id.zip or ''
-                                    ]"/>
-                                    <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
-                                    <t t-out="', '.join(clean_parts)"/>
-                                </div>
-                            </t>
-                            <t t-if="invoice.partner_id.phone">
-                                <div>Telp. <t t-esc="invoice.partner_id.phone"/></div>
-                            </t>
-                            <t t-if="invoice.partner_id.vat">
-                                <div>NPWP: <t t-esc="invoice.partner_id.vat"/></div>
-                            </t>
-                        </table>
-                    </div>
-
-                    <table class="no-border" style="font-size: 11pt; margin-bottom: 6px; width: 100%;">
+                    <table class="no-border" style="font-size: 11pt; width: 100%;">
                         <tr>
                             <!-- Date -->
                             <td style="width:25%;">Invoice Date: <span t-field="invoice.invoice_date"/></td>
@@ -208,6 +180,84 @@
                             </t>
                         </tr>
                     </table>
+
+                    <!-- <table class="no-border" style="font-size: 11pt;">
+                        <div><strong>Kepada Yth:</strong></div>
+                        <div><t t-esc="invoice.partner_id.name or ''"/></div>
+                        <div><t t-esc="invoice.partner_id.street or ''"/></div>
+                        <t t-if="invoice.partner_id.street2">
+                            <div><t t-esc="invoice.partner_id.street2"/></div>
+                        </t>
+                        <t t-if="invoice.partner_id.city or invoice.partner_id.state_id or invoice.partner_id.zip">
+                            <div>
+                                <t t-set="parts" t-value="[
+                                    invoice.partner_id.city or '',
+                                    invoice.partner_id.state_id.name if invoice.partner_id.state_id else '',
+                                    invoice.partner_id.zip or ''
+                                ]"/>
+                                <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+                                <t t-out="', '.join(clean_parts)"/>
+                            </div>
+                        </t>
+                        <t t-if="invoice.partner_id.phone">
+                            <div>Telp. <t t-esc="invoice.partner_id.phone"/></div>
+                        </t>
+                        <t t-if="invoice.partner_id.vat">
+                            <div>NPWP: <t t-esc="invoice.partner_id.vat"/></div>
+                        </t>
+                    </table> -->
+
+                    <table class="no-border" style="font-size: 11pt;">
+                        <tr>
+                            <td><strong>Kepada Yth:</strong></td>
+                        </tr>
+
+                        <tr>
+                            <td><t t-esc="invoice.partner_id.name or ''"/></td>
+                        </tr>
+
+                        <tr>
+                            <td><t t-esc="invoice.partner_id.street or ''"/></td>
+                        </tr>
+
+                        <t t-if="invoice.partner_id.street2">
+                            <tr>
+                                <td><t t-esc="invoice.partner_id.street2"/></td>
+                            </tr>
+                        </t>
+
+                        <!-- City, State, ZIP (dinamis) -->
+                        <t t-if="invoice.partner_id.city or invoice.partner_id.state_id or invoice.partner_id.zip">
+                            <tr>
+                                <td>
+                                    <t t-set="parts" t-value="[
+                                        invoice.partner_id.city or '',
+                                        invoice.partner_id.state_id.name if invoice.partner_id.state_id else '',
+                                        invoice.partner_id.zip or ''
+                                    ]"/>
+                                    <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+                                    <t t-out="', '.join(clean_parts)"/>
+                                </td>
+                            </tr>
+                        </t>
+
+                        <t t-if="invoice.partner_id.phone">
+                            <tr>
+                                <td>Telp. <t t-esc="invoice.partner_id.phone"/></td>
+                            </tr>
+                        </t>
+
+                        <t t-if="invoice.partner_id.vat">
+                            <tr>
+                                <td>NPWP: <t t-esc="invoice.partner_id.vat"/></td>
+                            </tr>
+                        </t>
+
+                    </table>
+
+
+
+                    
 
                     <!-- TABEL PRODUK -->
                     <table style="font-size: 11pt; width:100%;">
