@@ -206,13 +206,11 @@
                                 <td style="width:40%;">PO: <t t-esc="invoice.ref"/></td>
                             </t>
 
-                            <t t-if="invoice.invoice_payment_term_id">
-                                <td style="width:30%;">Requested By: 
-                                    <t t-esc="invoice.user_request.name or ''"/>
-                                </td>
+                            <t t-if="invoice.user_request.name">
+                                <td style="width:30%;">Requested By: <t t-esc="invoice.user_request.name or ''"/></td>
                             </t>
 
-                            <t t-if="invoice.invoice_payment_term_id">
+                            <t t-if="invoice.invoice_user_id.name">
                                 <td style="width:30%;">Admin Sales: 
                                     <t t-esc="invoice.invoice_user_id.name or ''"/>
                                 </td>
