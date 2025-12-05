@@ -148,8 +148,7 @@
                             </td>
 
                             <td style="width: 30%; vertical-align: top;">
-                                <table style="width:100%; border-collapse:collapse;">
-
+                                <table style="width:100%; border-collapse:collapse; margin-bottom: 3px;">
                                     <t t-if="invoice.dpp and int(invoice.dpp) != int(invoice.amount_untaxed)">
                                         <tr>
                                             <td style="border:1px solid #000; font-weight:bold; text-align:right;">Total Amount:</td>
@@ -200,7 +199,8 @@
                             </div>
                         </t>
                     </div>
-                    <hr style="border: 0; border-top: 1px solid #000; margin: 10px 0; width:100%;" />
+
+                    <hr style="border: 0; border-top: 1px solid #000; margin: 4px 0; width:100%;" />
 
                     <t t-set="company" t-value="invoice.company_id.name"/>
                     <div style="font-size:9pt; font-family:Consolas, monospace; width:100%;">    
