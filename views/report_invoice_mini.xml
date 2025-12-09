@@ -357,16 +357,16 @@
                             </td>
                         </tr>
                     </table>
-                    <div>
+                    <div style="font-size: 11pt;">
                         <t t-if="invoice.narration">
-                            <div style="font-size: 11pt; margin-bottom: 5px;">
+                            <div tyle="margin-bottom: 5px;">
                                 <span t-raw="invoice.narration"/>
                             </div>
                         </t>
                         <t t-if="invoice.no_seri">
                             <tr>
                                 <td colspan="6">
-                                    No Seri: <t t-esc="invoice.no_seri"/>
+                                    NO. SERI: <t t-esc="invoice.no_seri"/>
                                 </td>
                             </tr>
                         </t>
@@ -374,7 +374,7 @@
                         <t t-if="invoice.keterangan">
                             <tr>
                                 <td colspan="6">
-                                    Keterangan: <t t-esc="invoice.keterangan"/>
+                                    KETERANGAN: <t t-esc="invoice.keterangan"/>
                                 </td>
                             </tr>
                         </t>
@@ -398,19 +398,19 @@
                         or ''
                     "/>
 
-                    <div style="font-size:10pt; font-family:Consolas, monospace; width:100%; margin-top:5px;">
+                    <div style="font-size:11pt; font-family:Consolas, monospace; width:100%; margin-top:5px;">
 
                         <t t-if="company == 'PT. TEGUH JAYA ABADI SENTOSA'">
                             <table class="no-border" style="width:100%;">
                                 <tr>
                                     <td style="width:50%; text-align:left;">
-                                        <div>Rekening Pembayaran Ban Mobil</div>
+                                        <div>REKENING PEMBAYARAN BAN MOBIL</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
-                                        <div>BCA: 8615-69-8888 / Mandiri: 148-00-2722777-9</div>
+                                        <div>BCA: 8615-69-8888 / MANDIRI: 148-00-2722777-9</div>
                                     </td>
 
                                     <td style="width:50%; text-align:left;">
-                                        <div>Rekening Pembayaran Ban Motor</div>
+                                        <div>REKENING PEMBAYARAN BAN MOTOR</div>
                                         <div>PT. TEGUH JAYA ABADI SENTOSA</div>
                                         <div>BCA: 0272-05-2369</div>
                                     </td>
@@ -420,20 +420,20 @@
 
                         <t t-if="company == 'PT. TEGUH PERKASA KARYA PERDANA'">
                             <div style="text-align:left;">
-                                <div>Rekening A.N: PT. TEGUH PERKASA KARYA PERDANA &#160;&#160;&#160;&#160;&#160;&#160;&#160; Bank BCA: 191-0771-988 &#160;&#160;&#160;&#160;/ &#160;&#160;&#160;&#160;Bank BRI: 012101-0025-393-00</div>
+                                <div>REKENING A.N: PT. TEGUH PERKASA KARYA PERDANA &#160;&#160;&#160;&#160;&#160;&#160;&#160; BANK BCA: 191-0771-988 &#160;&#160;&#160;&#160;/ &#160;&#160;&#160;&#160;BANK BRI: 012101-0025-393-00</div>
                             </div>
                         </t>
 
                         <t t-if="company == 'PT. TEGUH KALTARA PERKASA'">
                             <div style="text-align:left;">
-                                <div>Rekening A.N: PT. TEGUH KALTARA PERKASA &#160;&#160;&#160;&#160;&#160;&#160;&#160; Bank BCA: 780-520-8881 &#160;&#160;&#160;&#160;/&#160;&#160;&#160;&#160; Bank Mandiri: 148-002-2285-558</div>
+                                <div>REKENING A.N: PT. TEGUH KALTARA PERKASA &#160;&#160;&#160;&#160;&#160;&#160;&#160; BANK BCA: 780-520-8881 &#160;&#160;&#160;&#160;/&#160;&#160;&#160;&#160; BANK MANDIRI: 148-002-2285-558</div>
                             </div>
                         </t>
 
                         <t t-if="company == 'PT. TEGUH GEMILANG OTOMOTIF'">
                             <div style="text-align:left;">
-                                <div>Rekening A.N: PT. TEGUH GEMILANG OTOMOTIF &#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                Bank BCA: 191-8993-389</div>
+                                <div>REKENING A.N: PT. TEGUH GEMILANG OTOMOTIF &#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                BANK BCA: 191-8993-389</div>
                             </div>
                         </t>
 
@@ -442,23 +442,23 @@
                                 <t t-if="order_type">
 
                                     <t t-if="order_type == 'Samarinda'">
-                                        <div>Rekening A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                        Bank BCA: 5135-6767-88</div>
+                                        <div>REKENING A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                        BANK BCA: 5135-6767-88</div>
                                     </t>
 
                                     <t t-elif="order_type == 'Balikpapan'">
-                                        <div>Rekening A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                        Bank BCA: 5135-77-8181</div>
+                                        <div>REKENING A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                        BANK BCA: 5135-77-8181</div>
                                     </t>
 
                                     <t t-elif="order_type == 'Malinau'">
-                                        <div>Rekening A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                        Bank Mandiri: 14800-889-25-899</div>
+                                        <div>REKENING A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                        BANK MANDIRI: 14800-889-25-899</div>
                                     </t>
 
                                     <t t-elif="order_type == 'Tarakan'">
-                                        <div>Rekening A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                        Bank Mandiri: 14800-889-25-899</div>
+                                        <div>REKENING A.N: PT. TEGUH PRIMA SENTOSA&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                        BANK MANDIRI: 14800-889-25-899</div>
                                     </t>
 
                                 </t>
