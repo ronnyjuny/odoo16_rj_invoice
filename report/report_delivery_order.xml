@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="action_report_delivery_order_mini" model="ir.actions.report">
+        <field name="name">Custom Delivery Order</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rj_invoice.report_delivery_order_mini_template</field>
+        <field name="report_file">rj_invoice.report_delivery_order_mini_template</field>
+        <field name="paperformat_id" ref="rj_invoice.paperformat_invoice_a5_custom"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
     <template id="report_delivery_order_mini_template">
         <t t-call="web.html_container">
             <meta charset="utf-8"/>
@@ -74,8 +85,8 @@
                         </tr>
                     </table>
 
-                    <!-- CUSTOMER ADDRESS + EXTRA INFO -->
-                    <table class="no-border" style="font-size: 11pt; width:100%; margin-top:2px;">
+
+                    <table class="no-border" style="font-size: 11pt; width:100%;">
                         <tr>
                             <td style="vertical-align: top; width: 100%;">
 
@@ -118,33 +129,6 @@
                                         <tr>
                                             <td style="padding:0; margin:0;">
                                                 Telp. <t t-esc="doc.partner_id.phone"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <!-- Customer PO -->
-                                    <t t-if="doc.po_customer">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                Customer PO: <t t-esc="doc.po_customer"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <!-- Warehouse -->
-                                    <t t-if="doc.location_id">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                Warehouse: <t t-esc="doc.location_id.display_name"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <!-- Salesperson -->
-                                    <t t-if="doc.sale_id.user_id.name">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                Salesperson: <t t-esc="doc.sale_id.user_id.name"/>
                                             </td>
                                         </tr>
                                     </t>
