@@ -97,8 +97,8 @@
                                         </td>
                                     </tr>
                             </td>
-                            <td style="vertical-align: top; width: 50%; text-align: right; font-size: 15pt; font-weight:bold;">
-                                SURAT JALAN
+                            <td style="vertical-align: top; width: 50%;">
+                                <t t-esc="doc.name or ''"/>
                             </td>
                         </tr>
                         <tr>
