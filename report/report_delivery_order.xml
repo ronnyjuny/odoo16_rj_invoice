@@ -58,6 +58,7 @@
                                 <div>
                                     <strong> SEQ: <t t-esc="doc.custom_sequence"/></strong>
                                 </div>
+                            </td>
 
                         </tr>
 
