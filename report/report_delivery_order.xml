@@ -23,7 +23,6 @@
                 </t> -->
                 <style>
                     @page {
-                        <!-- size: 20cm 13.97cm; -->
                         size: 20cm 27.94cm;
                         margin: 0.4cm;
                     }
@@ -54,11 +53,78 @@
                                     </div>
                                 </t>
                             </td>
-
                             <td class="no-border" style="width: 40%; text-align: right; font-size: 14pt;">
-                                <div>
-                                    <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
-                                </div>
+                                <t t-if="doc.custom_sequence">
+                                    <div>
+                                        <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
+                                    </div>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0; width:100%;" />
+                    <table class="no-border" style="font-size: 11pt; width:100%;">
+                        <tr>
+                            <td style="vertical-align: top; width: 90%;">
+                                <table class="no-border" style="font-size: 11pt; width:100%;">
+                                    <tr>
+                                        <td style="padding:0; margin:0;">
+                                            <strong>Kepada Yth:</strong>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding:0; margin:0;">
+                                            <t t-esc="doc.partner_id.name or ''"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding:0; margin:0;">
+                                            <t t-esc="doc.partner_id.street or ''"/>
+                                        </td>
+                                    </tr>
+
+                                    <t t-if="doc.partner_id.street2">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                <t t-esc="doc.partner_id.street2"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="doc.partner_id.city or doc.partner_id.state_id or doc.partner_id.zip">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                <t t-set="parts" t-value="[doc.partner_id.city or '',
+                                                                        doc.partner_id.state_id.name if doc.partner_id.state_id else '',
+                                                                        doc.partner_id.zip or '']"/>
+                                                <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+                                                <t t-out="', '.join(clean_parts)"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="doc.partner_id.phone">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                Telp. <t t-esc="doc.partner_id.phone"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="doc.partner_id.vat">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                NPWP: <t t-esc="doc.partner_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </td>
+
+                            <td style="vertical-align: top; width: 10%; text-align: right; font-size: 18pt; font-weight:bold;">
+                                SURAT JALAN
                             </td>
                         </tr>
                     </table>
