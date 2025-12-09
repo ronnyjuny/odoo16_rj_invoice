@@ -137,62 +137,19 @@
                                             </td>
                                         </tr>
                                     </t>
+
+                                    <t t-if="doc.partner_id.vat">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                NPWP: <t t-esc="doc.partner_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </table>
                             </td>
 
                             <td style="vertical-align: top; width: 15%; text-align: right; font-size: 15pt; font-weight:bold;">
                                 SURAT JALAN
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align: top; width: 85%;">
-                                <table class="no-border" style="font-size: 11pt; width:100%;">
-                                    <tr>
-                                        <td style="padding:0; margin:0;">
-                                            <strong>Kepada Yth:</strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="padding:0; margin:0;">
-                                            <t t-esc="doc.partner_id.name or ''"/>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="padding:0; margin:0;">
-                                            <t t-esc="doc.partner_id.street or ''"/>
-                                        </td>
-                                    </tr>
-
-                                    <t t-if="doc.partner_id.street2">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                <t t-esc="doc.partner_id.street2"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <t t-if="doc.partner_id.city or doc.partner_id.state_id or doc.partner_id.zip">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                <t t-set="parts" t-value="[doc.partner_id.city or '',
-                                                                        doc.partner_id.state_id.name if doc.partner_id.state_id else '',
-                                                                        doc.partner_id.zip or '']"/>
-                                                <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
-                                                <t t-out="', '.join(clean_parts)"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <t t-if="doc.partner_id.phone">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                Telp. <t t-esc="doc.partner_id.phone"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </table>
                             </td>
                         </tr>
                     </table>
