@@ -48,21 +48,21 @@
                     <table class="no-border" style="font-size: 11pt;">
                         <tr>
                             <td class="no-border" style="width: 60%;">
-                                <t t-if="invoice.company_id.name">
+                                <t t-if="doc.company_id.name">
                                     <div style="font-size: 13pt;">
-                                        <strong><t t-esc="invoice.company_id.name"/></strong>
+                                        <strong><t t-esc="doc.company_id.name"/></strong>
                                     </div>
                                 </t>
                             </td>
+
                             <td class="no-border" style="width: 40%; text-align: right; font-size: 14pt;">
                                 <div>
-                                    <strong> SEQ: <t t-esc="doc.custom_sequence"/></strong>
+                                    <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
                                 </div>
                             </td>
-
                         </tr>
-
                     </table>
+
                 </div>
             </t>
         </t>
