@@ -121,23 +121,11 @@
 
                             </td>
 
-                            <td class="no-border" style="width: 40%; vertical-align: top; text-align: right;">
-                                <!-- Order Type -->
-                                <t t-if="
-                                    invoice.invoice_line_ids 
-                                    and invoice.invoice_line_ids[0].sale_line_ids 
-                                    and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id
-                                ">
-                                    <div style="font-size: 12pt;">
-                                        <strong>
-                                            <t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/>
-                                        </strong>
-                                    </div>
-                                </t>
+                            <td class="no-border" style="width: 40%; vertical-align: top; text-align: right;">                                
                                 <!-- Nomor Sequence -->
                                 <t t-if="invoice.custom_sequence">
-                                    <div style="font-size: 13pt;">
-                                        No. Seq:  <t t-esc="invoice.custom_sequence"/>
+                                    <div style="font-size: 14pt;">
+                                    <strong>No. Seq:  <t t-esc="invoice.custom_sequence"/> </strong>
                                     </div>
                                 </t>
                                 <!-- No Invoice -->
@@ -156,6 +144,16 @@
                                     <div style="font-size: 11pt;">
                                         Term: <t t-esc="invoice.invoice_payment_term_id.name"/>
                                         /  Due Date: <t t-esc="invoice.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    </div>
+                                </t>
+                                <!-- Order Type -->
+                                <t t-if="
+                                    invoice.invoice_line_ids 
+                                    and invoice.invoice_line_ids[0].sale_line_ids 
+                                    and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id
+                                ">
+                                    <div style="font-size: 11pt;">
+                                        Order Type: <t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/>
                                     </div>
                                 </t>
                             </td>
