@@ -338,7 +338,7 @@
                         </table>
                     </t>
 
-                    <table class="no-border" style="width:100%; margin-top:8px;">
+                    <table class="no-border" style="width:100%; margin-top:7px;">
                         <tr>
                             <td style="text-align:center; font-weight:bold;">
                                 BARANG TELAH DITERIMA DENGAN BAIK DAN CUKUP
@@ -346,7 +346,7 @@
                         </tr>
                     </table>
 
-                    <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:12px; height:80px;" border="1">
+                    <table class="no-border" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:2px; height:80px;">
                         <tr>
                             <td style="text-align:center; vertical-align:bottom; padding:6px; width:33%;">
                                 Admin
