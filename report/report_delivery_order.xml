@@ -306,13 +306,13 @@
                     </table>
 
                     <t t-if="doc.no_seri">
-                        <div style="margin-top:3px;">
+                        <div style="margin-top:5px;">
                             NO SERI: <t t-esc="doc.no_seri"/>
                         </div>
                     </t>
 
                     <t t-if="doc.keterangan">
-                        <div style="margin-top:3px;">
+                        <div style="margin-top:5px;">
                             KETERANGAN: <t t-esc="doc.keterangan"/>
                         </div>
                     </t>
@@ -334,7 +334,7 @@
                         </table>
                     </t>
 
-                    <table class="no-border" style="width:100%; margin-top:7px;">
+                    <table class="no-border" style="width:100%; margin-top:5px;">
                         <tr>
                             <td style="text-align:center; font-weight:bold;">
                                 BARANG TELAH DITERIMA DENGAN BAIK DAN CUKUP
