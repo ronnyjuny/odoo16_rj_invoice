@@ -224,7 +224,7 @@
                             </t>
                         </t>
                     </table>
-                    <table class="no-border" style="width:100%; font-size:11pt; margin-top:5px;">
+                    <table class="no-border" style="width:100%; font-size:11pt; margin-top:7px;">
                         <tr>
                             <td style="text-align:left; padding:0; margin:0;">
                                 <t t-if="doc.origin">
@@ -250,6 +250,64 @@
                             </tr>
                         </t>
                     </table>
+
+                    <!-- ===== HEADER PRODUK ===== -->
+                    <table class="no-border" style="width:100%; font-size:11pt; margin-top:6px;">
+                        <tr style="border-bottom:1px dashed #000;">
+                            <td style="width:60%; text-align:left; font-weight:bold;">
+                                Product
+                            </td>
+                            <td style="width:20%; text-align:right; font-weight:bold;">
+                                Ordered
+                            </td>
+                            <td style="width:20%; text-align:right; font-weight:bold;">
+                                Delivered
+                            </td>
+                        </tr>
+
+                        <!-- ===== LIST PRODUK ===== -->
+                        <t t-foreach="doc.move_ids" t-as="l">
+                            <tr>
+                                <!-- Product -->
+                                <td style="text-align:left; padding:2px 0;">
+                                    <t t-esc="(l.product_id.name or '')[:50]"/>
+                                </td>
+
+                                <!-- Ordered -->
+                                <td style="text-align:right; padding:2px 0;">
+                                    <t t-out="'{:,.0f} {}'.format(l.product_uom_qty or 0, l.product_uom.name or '')"/>
+                                </td>
+
+                                <!-- Delivered -->
+                                <td style="text-align:right; padding:2px 0;">
+                                    <t t-out="'{:,.0f} {}'.format(l.quantity_done or 0, l.product_uom.name or '')"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+
+                    <!-- ===== GARIS PEMBATAS JIKA ADA NO SERI / KETERANGAN ===== -->
+                    <t t-if="doc.no_seri or doc.keterangan">
+                        <table class="no-border" style="width:100%; margin-top:4px;">
+                            <tr>
+                                <td style="border-top:1px dashed #000;"></td>
+                            </tr>
+                        </table>
+                    </t>
+
+                    <!-- ===== NO SERI ===== -->
+                    <t t-if="doc.no_seri">
+                        <div style="margin-top:3px;">
+                            No Seri: <t t-esc="doc.no_seri"/>
+                        </div>
+                    </t>
+
+                    <!-- ===== KETERANGAN ===== -->
+                    <t t-if="doc.keterangan">
+                        <div style="margin-top:2px;">
+                            Keterangan: <t t-esc="doc.keterangan"/>
+                        </div>
+                    </t>
 
 
                 </div>
