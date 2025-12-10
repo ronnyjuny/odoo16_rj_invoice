@@ -65,7 +65,7 @@
                     <table class="no-border" style="font-size: 11pt; width:100%;">
                         <tr>
                             <!-- Kolom kiri: Nama perusahaan -->
-                            <td class="no-border" style="width: 33%; text-align: left;">
+                            <td class="no-border" style="width: 40%; text-align: left;">
                                 <t t-if="doc.company_id.name">
                                     <div style="font-size: 13pt;">
                                         <strong><t t-esc="doc.company_id.name"/></strong>
@@ -74,14 +74,14 @@
                             </td>
 
                             <!-- Kolom tengah: SURAT JALAN -->
-                            <td class="no-border" style="width: 34%; text-align: center;">
+                            <td class="no-border" style="width: 25%; text-align: center;">
                                 <div style="font-size: 14pt; font-weight: bold;">
                                     SURAT JALAN
                                 </div>
                             </td>
 
                             <!-- Kolom kanan: SEQ (hanya jika ada datanya) -->
-                            <td class="no-border" style="width: 33%; text-align: right; font-size: 14pt;">
+                            <td class="no-border" style="width: 35%; text-align: right; font-size: 14pt;">
                                 <t t-if="doc.custom_sequence">
                                     <div>
                                         <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
