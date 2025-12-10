@@ -261,25 +261,31 @@
                             </tr>
                         </thead>
 
+                        <t t-set="index" t-value="0"/>
                         <tbody>
-                            <t t-foreach="doc.move_ids" t-as="l" t-counter="no">
+                            <t t-foreach="doc.move_ids" t-as="l">
                                 <t t-set="index" t-value="index + 1"/>
+
                                 <tr>
                                     <td style="text-align:center; padding:4px;">
                                         <t t-esc="index"/>
                                     </td>
+
                                     <td style="text-align:left; padding:4px;">
                                         <t t-esc="(l.product_id.name or '')[:50]"/>
                                     </td>
+
                                     <td style="text-align:center; padding:4px;">
                                         <t t-out="'{:,.0f} {}'.format(l.product_uom_qty or 0, l.product_uom.name or '')"/>
                                     </td>
+
                                     <td style="text-align:center; padding:4px;">
                                         <t t-out="'{:,.0f} {}'.format(l.quantity_done or 0, l.product_uom.name or '')"/>
                                     </td>
                                 </tr>
                             </t>
                         </tbody>
+
                     </table>
 
                     <t t-if="doc.no_seri or doc.keterangan">
