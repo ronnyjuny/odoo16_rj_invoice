@@ -302,10 +302,20 @@
                                 </tr>
                             </t>
                         </tbody>
+                        <t t-if="doc.no_seri">
+                            <div style="margin-top:5px;">
+                                NO SERI: <t t-esc="doc.no_seri"/>
+                            </div>
+                        </t>
 
+                        <t t-if="doc.keterangan">
+                            <div style="margin-top:5px;">
+                                KETERANGAN: <t t-esc="doc.keterangan"/>
+                            </div>
+                        </t>
                     </table>
 
-                    <t t-if="doc.no_seri">
+                    <!-- <t t-if="doc.no_seri">
                         <div style="margin-top:5px;">
                             NO SERI: <t t-esc="doc.no_seri"/>
                         </div>
@@ -315,7 +325,7 @@
                         <div style="margin-top:5px;">
                             KETERANGAN: <t t-esc="doc.keterangan"/>
                         </div>
-                    </t>
+                    </t> -->
 
                     <t t-if="(doc.no_polisi_id and doc.no_polisi_id.name) or (doc.driver_id and doc.driver_id.name)">
                         <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:8px;" border="1">
