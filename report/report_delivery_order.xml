@@ -44,27 +44,8 @@
                 </style>
 
                 <div class="page" style="font-size: 11pt; line-height: 1.3;">
-                    <!-- <table class="no-border" style="font-size: 11pt;">
-                        <tr>
-                            <td class="no-border" style="width: 60%;">
-                                <t t-if="doc.company_id.name">
-                                    <div style="font-size: 13pt;">
-                                        <strong><t t-esc="doc.company_id.name"/></strong>
-                                    </div>
-                                </t>
-                            </td>
-                            <td class="no-border" style="width: 40%; text-align: right; font-size: 14pt;">
-                                <t t-if="doc.custom_sequence">
-                                    <div>
-                                        <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
-                                    </div>
-                                </t>
-                            </td>
-                        </tr>
-                    </table> -->
                     <table class="no-border" style="font-size: 11pt; width:100%;">
                         <tr>
-                            <!-- Kolom kiri: Nama perusahaan -->
                             <td class="no-border" style="width: 40%; text-align: left;">
                                 <t t-if="doc.company_id.name">
                                     <div style="font-size: 13pt;">
@@ -72,16 +53,12 @@
                                     </div>
                                 </t>
                             </td>
-
-                            <!-- Kolom tengah: SURAT JALAN -->
                             <td class="no-border" style="width: 25%; text-align: center;">
-                                <div style="font-size: 14pt; font-weight: bold;">
+                                <div style="font-size: 13pt; font-weight: bold;">
                                     SURAT JALAN
                                 </div>
                             </td>
-
-                            <!-- Kolom kanan: SEQ (hanya jika ada datanya) -->
-                            <td class="no-border" style="width: 35%; text-align: right; font-size: 14pt;">
+                            <td class="no-border" style="width: 35%; text-align: right; font-size: 13pt;">
                                 <t t-if="doc.custom_sequence">
                                     <div>
                                         <strong>SEQ: <t t-esc="doc.custom_sequence"/></strong>
@@ -149,6 +126,88 @@
                         </tr>
                     </table>
 
+                    <table class="no-border" style="font-size:11pt; width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="padding:0; margin:0; font-weight:bold; width:30%;">
+                                <t t-if="doc.picking_type_id.code == 'outgoing'">
+                                    Alamat Pengiriman:
+                                </t>
+                                <t t-else="">
+                                    Warehouse Address:
+                                </t>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!-- Jika OUTGOING → ambil alamat shipping (customer) -->
+                        <t t-if="doc.picking_type_id.code == 'outgoing'">
+                            <t t-set="shipping" t-value="doc.partner_id"/>
+
+                            <tr>
+                                <td colspan="2" style="padding:0; margin:0;">
+                                    <t t-set="partner_name"
+                                        t-value="', '.join(filter(None, [
+                                            (shipping.parent_id.name if shipping.parent_id and shipping.parent_id.name != shipping.name else ''),
+                                            shipping.name
+                                    ]))"/>
+                                    <t t-esc="partner_name"/>
+                                </td>
+                            </tr>
+
+                            <t t-if="shipping.street">
+                                <tr><td colspan="2"><t t-esc="shipping.street"/></td></tr>
+                            </t>
+
+                            <t t-if="shipping.street2">
+                                <tr><td colspan="2"><t t-esc="shipping.street2"/></td></tr>
+                            </t>
+
+                            <tr>
+                                <td colspan="2">
+                                    <t t-set="city" t-value="shipping.city or ''"/>
+                                    <t t-set="state" t-value="shipping.state_id.name if shipping.state_id else ''"/>
+                                    <t t-set="kodepos" t-value="shipping.zip or ''"/>
+                                    <t t-raw="' - '.join(filter(None, [city, state, kodepos]))"/>
+                                </td>
+                            </tr>
+
+                            <t t-if="shipping.phone">
+                                <tr>
+                                    <td colspan="2">Telp: <t t-esc="shipping.phone"/></td>
+                                </tr>
+                            </t>
+                        </t>
+
+                        <!-- Jika BUKAN outgoing → gunakan alamat company -->
+                        <t t-else="">
+                            <tr>
+                                <td colspan="2">
+                                    <t t-esc="doc.company_id.name"/>
+                                </td>
+                            </tr>
+
+                            <t t-if="doc.company_id.street">
+                                <tr><td colspan="2"><t t-esc="doc.company_id.street"/></td></tr>
+                            </t>
+
+                            <t t-if="doc.company_id.street2">
+                                <tr><td colspan="2"><t t-esc="doc.company_id.street2"/></td></tr>
+                            </t>
+
+                            <tr>
+                                <td colspan="2">
+                                    <t t-set="city" t-value="doc.company_id.city or ''"/>
+                                    <t t-set="state" t-value="doc.company_id.state_id.name if doc.company_id.state_id else ''"/>
+                                    <t t-set="kodepos" t-value="doc.company_id.zip or ''"/>
+                                    <t t-raw="' - '.join(filter(None, [city, state, kodepos]))"/>
+                                </td>
+                            </tr>
+
+                            <t t-if="doc.company_id.phone">
+                                <tr><td colspan="2">Telp: <t t-esc="doc.company_id.phone"/></td></tr>
+                            </t>
+                        </t>
+                    </table>
                 </div>
             </t>
         </t>
