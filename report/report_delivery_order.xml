@@ -138,11 +138,11 @@
                             </td>
                         </tr>
 
-                        <!-- ==== OUTGOING : Shipping Address ==== -->
+                        <!-- ========== OUTGOING (Customer Shipping Address) ========== -->
                         <t t-if="doc.picking_type_id.code == 'outgoing'">
                             <t t-set="shipping" t-value="doc.partner_id"/>
 
-                            <!-- Nama Customer -->
+                            <!-- Nama -->
                             <tr>
                                 <td style="padding:0; margin:0;">
                                     <t t-set="partner_name"
@@ -154,7 +154,7 @@
                                 </td>
                             </tr>
 
-                            <!-- Alamat -->
+                            <!-- Jalan -->
                             <t t-if="shipping.street">
                                 <tr><td style="padding:0; margin:0;"><t t-esc="shipping.street"/></td></tr>
                             </t>
@@ -163,23 +163,24 @@
                                 <tr><td style="padding:0; margin:0;"><t t-esc="shipping.street2"/></td></tr>
                             </t>
 
-                            <!-- Kota, Provinsi, Zip -->
-                            <t t-set="city" t-value="shipping.city or ''"/>
-                            <t t-set="state" t-value="shipping.state_id.name if shipping.state_id else ''"/>
-                            <t t-set="zip" t-value="shipping.zip or ''"/>
+                            <!-- City, State, Zip (SAFE STRING) -->
+                            <t t-set="city" t-value="str(shipping.city or '')"/>
+                            <t t-set="state" t-value="str(shipping.state_id.name) if shipping.state_id else ''"/>
+                            <t t-set="zip" t-value="str(shipping.zip or '')"/>
+
                             <t t-set="location" t-value="' , '.join([x for x in [city, state, zip] if x])"/>
 
                             <t t-if="location">
                                 <tr><td style="padding:0; margin:0;"><t t-esc="location"/></td></tr>
                             </t>
 
-                            <!-- Telepon -->
+                            <!-- Phone -->
                             <t t-if="shipping.phone">
                                 <tr><td style="padding:0; margin:0;">Telp. <t t-esc="shipping.phone"/></td></tr>
                             </t>
                         </t>
 
-                        <!-- ==== INCOMING / OTHER : Company Address ==== -->
+                        <!-- ========== NON-OUTGOING (Company Address) ========== -->
                         <t t-else="">
                             <tr><td style="padding:0; margin:0;"><t t-esc="doc.company_id.name"/></td></tr>
 
@@ -191,9 +192,11 @@
                                 <tr><td style="padding:0; margin:0;"><t t-esc="doc.company_id.street2"/></td></tr>
                             </t>
 
-                            <t t-set="city" t-value="doc.company_id.city or ''"/>
-                            <t t-set="state" t-value="doc.company_id.state_id.name if doc.company_id.state_id else ''"/>
-                            <t t-set="zip" t-value="doc.company_id.zip or ''"/>
+                            <!-- City, State, Zip (SAFE STRING) -->
+                            <t t-set="city" t-value="str(doc.company_id.city or '')"/>
+                            <t t-set="state" t-value="str(doc.company_id.state_id.name) if doc.company_id.state_id else ''"/>
+                            <t t-set="zip" t-value="str(doc.company_id.zip or '')"/>
+
                             <t t-set="location" t-value="' - '.join([x for x in [city, state, zip] if x])"/>
 
                             <t t-if="location">
@@ -205,6 +208,7 @@
                             </t>
                         </t>
                     </table>
+
                 </div>
             </t>
         </t>
