@@ -207,7 +207,6 @@
                                 <tr><td style="padding:0; margin:0;"><t t-esc="doc.company_id.street2"/></td></tr>
                             </t>
 
-                            <!-- City, State, Zip -->
                             <t t-set="city" t-value="str(doc.company_id.city or '').strip()"/>
                             <t t-set="state" t-value="str(doc.company_id.state_id.name if doc.company_id.state_id else '').strip()"/>
                             <t t-set="zip_code" t-value="str(doc.company_id.zip or '').strip()"/>
@@ -227,23 +226,15 @@
 
                     <table class="no-border" style="width:100%; font-size:11pt; margin-top:7px;">
                         <tr>
-
-                            <!-- ================= PO ADA ================= -->
                             <t t-if="doc.po_customer">
-
-                                <!-- PO (KIRI) -->
                                 <td style="text-align:left; padding:0; margin:0;">
                                     PO: <t t-esc="doc.po_customer"/>
                                 </td>
-
-                                <!-- ORDER (TENGAH) -->
                                 <t t-if="doc.origin">
                                     <td style="text-align:center; padding:0; margin:0;">
                                         Order: <t t-esc="doc.origin"/>
                                     </td>
                                 </t>
-
-                                <!-- SHIPPING (KANAN) -->
                                 <td style="text-align:right; padding:0; margin:0;">
                                     Shipping Date:
                                     <t t-if="doc.state == 'done' and doc.date_done and not isinstance(doc.date_done, bool)">
@@ -253,20 +244,14 @@
                                         <t t-esc="doc.scheduled_date.strftime('%d-%m-%Y')"/>
                                     </t>
                                 </td>
-
                             </t>
 
-                            <!-- ================= PO TIDAK ADA ================= -->
                             <t t-else="">
-
-                                <!-- ORDER (KIRI) -->
                                 <t t-if="doc.origin">
                                     <td style="text-align:left; padding:0; margin:0;">
                                         Order: <t t-esc="doc.origin"/>
                                     </td>
                                 </t>
-
-                                <!-- SHIPPING (TENGAH) -->
                                 <t t-if="(doc.state == 'done' and doc.date_done and not isinstance(doc.date_done, bool))
                                         or (doc.scheduled_date and not isinstance(doc.scheduled_date, bool))">
                                     <td style="text-align:center; padding:0; margin:0;">
@@ -279,13 +264,9 @@
                                         </t>
                                     </td>
                                 </t>
-
                             </t>
-
                         </tr>
                     </table>
-
-
 
                     <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:6px;" border="1">
                         <thead>
@@ -340,6 +321,44 @@
                         </div>
                     </t>
 
+                    <t t-if="(doc.no_polisi_id and doc.no_polisi_id.name) or (doc.driver_id and doc.driver_id.name)">
+                        <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:8px;" border="1">
+                            <tr>
+                                <td style="text-align:left; padding:6px; width:50%;">
+                                    <t t-if="doc.no_polisi_id and doc.no_polisi_id.name">
+                                        No. Polisi: <t t-esc="doc.no_polisi_id.name"/>
+                                    </t>
+                                </td>
+                                <td style="text-align:left; padding:6px; width:50%;">
+                                    <t t-if="doc.driver_id and doc.driver_id.name">
+                                        Driver: <t t-esc="doc.driver_id.name"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+
+                    <table class="no-border" style="width:100%; margin-top:8px;">
+                        <tr>
+                            <td style="text-align:center; font-weight:bold;">
+                                BARANG TELAH DITERIMA DENGAN BAIK DAN CUKUP
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:12px; height:80px;" border="1">
+                        <tr>
+                            <td style="text-align:center; vertical-align:bottom; padding:6px; width:33%;">
+                                Admin
+                            </td>
+                            <td style="text-align:center; vertical-align:bottom; padding:6px; width:34%;">
+                                Pengirim
+                            </td>
+                            <td style="text-align:center; vertical-align:bottom; padding:6px; width:33%;">
+                                Penerima
+                            </td>
+                        </tr>
+                    </table>
 
                 </div>
             </t>
