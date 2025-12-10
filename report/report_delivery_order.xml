@@ -305,10 +305,6 @@
 
                     </table>
 
-                    <t t-if="doc.no_seri or doc.keterangan">
-                        <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0; width:100%;" />
-                    </t>
-
                     <t t-if="doc.no_seri">
                         <div style="margin-top:3px;">
                             NO SERI: <t t-esc="doc.no_seri"/>
@@ -316,7 +312,7 @@
                     </t>
 
                     <t t-if="doc.keterangan">
-                        <div style="margin-top:2px;">
+                        <div style="margin-top:3px;">
                             KETERANGAN: <t t-esc="doc.keterangan"/>
                         </div>
                     </t>
@@ -341,7 +337,7 @@
                     <table class="no-border" style="width:100%; margin-top:7px;">
                         <tr>
                             <td style="text-align:center; font-weight:bold;">
-                                --------------------- BARANG TELAH DITERIMA DENGAN BAIK DAN CUKUP ---------------------
+                                BARANG TELAH DITERIMA DENGAN BAIK DAN CUKUP
                             </td>
                         </tr>
                     </table>
