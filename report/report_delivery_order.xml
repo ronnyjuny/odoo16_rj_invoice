@@ -71,6 +71,15 @@
                     <table class="no-border" style="font-size: 11pt; width:100%;">
                         <tr>
                             <td style="vertical-align: top; width: 80%;">
+                                
+                                <!-- ====== SET PARTNER INVOICE DENGAN FALLBACK ====== -->
+                                <t t-set="invoice_partner"
+                                t-value="
+                                        doc.sale_id.partner_invoice_id
+                                        if doc.sale_id and doc.sale_id.partner_invoice_id
+                                        else doc.partner_id
+                                "/>
+
                                 <table class="no-border" style="font-size: 11pt; width:100%;">
                                     <tr>
                                         <td style="padding:0; margin:0;">
@@ -78,48 +87,59 @@
                                         </td>
                                     </tr>
 
+                                    <!-- Nama -->
                                     <tr>
                                         <td style="padding:0; margin:0;">
-                                            <t t-esc="doc.partner_id.display_name or ''"/>
+                                            <t t-esc="invoice_partner.display_name or ''"/>
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td style="padding:0; margin:0;">
-                                            <t t-esc="doc.partner_invoice_id.street or ''"/>
-                                        </td>
-                                    </tr>
-
-                                    <t t-if="doc.partner_invoice_id.street2">
+                                    <!-- Street -->
+                                    <t t-if="invoice_partner.street">
                                         <tr>
                                             <td style="padding:0; margin:0;">
-                                                <t t-esc="doc.partner_invoice_id.street2"/>
+                                                <t t-esc="invoice_partner.street"/>
                                             </td>
                                         </tr>
                                     </t>
 
-                                    <t t-if="doc.partner_invoice_id.city or doc.partner_invoice_id.state_id.name or doc.partner_invoice_id.zip">
+                                    <!-- Street2 -->
+                                    <t t-if="invoice_partner.street2">
                                         <tr>
                                             <td style="padding:0; margin:0;">
-                                                <t t-set="parts" t-value="[doc.partner_invoice_id.city or '',
-                                                                        doc.partner_invoice_id.name if doc.partner_invoice_id else '',
-                                                                        doc.partner_invoice_id.zip or '']"/>
-                                                <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+                                                <t t-esc="invoice_partner.street2"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <!-- City, State, Zip -->
+                                    <t t-set="parts" t-value="[
+                                        invoice_partner.city or '',
+                                        invoice_partner.state_id.name if invoice_partner.state_id else '',
+                                        invoice_partner.zip or ''
+                                    ]"/>
+                                    <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+
+                                    <t t-if="clean_parts">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
                                                 <t t-out="', '.join(clean_parts)"/>
                                             </td>
                                         </tr>
                                     </t>
 
-                                    <t t-if="doc.partner_invoice_id.phone">
+                                    <!-- Phone -->
+                                    <t t-if="invoice_partner.phone">
                                         <tr>
                                             <td style="padding:0; margin:0;">
-                                                Telp. <t t-esc="doc.partner_invoice_id.phone"/>
+                                                Telp. <t t-esc="invoice_partner.phone"/>
                                             </td>
                                         </tr>
                                     </t>
                                 </table>
                             </td>
 
+                            <!-- NOMOR DO -->
                             <td style="vertical-align: top; width: 20%; text-align: right; font-size: 12pt;">
                                 <t t-esc="doc.name"/>
                             </td>
@@ -163,7 +183,7 @@
                                 <tr><td style="padding:0; margin:0;"><t t-esc="shipping.street2"/></td></tr>
                             </t>
 
-                            <!-- City, State, Zip (SAFE STRING) -->
+                            <!-- City, State, Zip -->
                             <t t-set="city" t-value="str(shipping.city or '').strip()"/>
                             <t t-set="state" t-value="str(shipping.state_id.name if shipping.state_id else '').strip()"/>
                             <t t-set="zip" t-value="str(shipping.zip or '').strip()"/>
@@ -192,10 +212,10 @@
                                 <tr><td style="padding:0; margin:0;"><t t-esc="doc.company_id.street2"/></td></tr>
                             </t>
 
-                            <!-- City, State, Zip (SAFE STRING) -->
-                            <t t-set="city" t-value="str(shipping.city or '').strip()"/>
-                            <t t-set="state" t-value="str(shipping.state_id.name if shipping.state_id else '').strip()"/>
-                            <t t-set="zip" t-value="str(shipping.zip or '').strip()"/>
+                            <!-- City, State, Zip -->
+                            <t t-set="city" t-value="str(doc.company_id.city or '').strip()"/>
+                            <t t-set="state" t-value="str(doc.company_id.state_id.name if doc.company_id.state_id else '').strip()"/>
+                            <t t-set="zip" t-value="str(doc.company_id.zip or '').strip()"/>
 
                             <t t-set="location"
                                 t-value="' - '.join([str(x) for x in [city, state, zip] if x])"/>
@@ -209,6 +229,7 @@
                             </t>
                         </t>
                     </table>
+
 
                 </div>
             </t>
