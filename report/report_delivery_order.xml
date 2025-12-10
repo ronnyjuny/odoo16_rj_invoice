@@ -15,12 +15,6 @@
         <t t-call="web.html_container">
         <meta charset="utf-8"/>
             <t t-foreach="docs" t-as="doc">
-                <!-- <t t-call="web.basic_layout">
-                    <div class="page">
-                        <h1>Delivery Order</h1>
-                        <p>This is a custom print for delivery order <span t-esc="doc.name"/>.</p>
-                    </div>
-                </t> -->
                 <style>
                     @page {
                         size: 20cm 27.94cm;
@@ -230,16 +224,13 @@
                             </t>
                         </t>
                     </table>
-                    <table class="no-border" style="width:100%; font-size:11pt;">
+                    <table class="no-border" style="width:100%; font-size:11pt; margin-top:5px;">
                         <tr>
-                            <!-- KIRI: ORDER -->
                             <td style="text-align:left; padding:0; margin:0;">
                                 <t t-if="doc.origin">
                                     Order: <t t-esc="doc.origin"/>
                                 </t>
                             </td>
-
-                            <!-- KANAN: SHIPPING DATE -->
                             <td style="text-align:right; padding:0; margin:0;">
                                 <t t-if="doc.state == 'done' and doc.date_done and not isinstance(doc.date_done, bool)">
                                     Shipping Date: <t t-esc="doc.date_done.strftime('%d-%m-%Y')"/>
@@ -251,8 +242,6 @@
                                 </t>
                             </td>
                         </tr>
-
-                        <!-- PO CUSTOMER -->
                         <t t-if="doc.po_customer">
                             <tr>
                                 <td colspan="2" style="text-align:left; padding-top:2px;">
