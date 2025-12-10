@@ -230,6 +230,37 @@
                             </t>
                         </t>
                     </table>
+                    <table class="no-border" style="width:100%; font-size:11pt;">
+                        <tr>
+                            <!-- KIRI: ORDER -->
+                            <td style="text-align:left; padding:0; margin:0;">
+                                <t t-if="doc.origin">
+                                    Order: <t t-esc="doc.origin"/>
+                                </t>
+                            </td>
+
+                            <!-- KANAN: SHIPPING DATE -->
+                            <td style="text-align:right; padding:0; margin:0;">
+                                <t t-if="doc.state == 'done' and doc.date_done and not isinstance(doc.date_done, bool)">
+                                    Shipping Date: <t t-esc="doc.date_done.strftime('%d-%m-%Y')"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="doc.scheduled_date and not isinstance(doc.scheduled_date, bool)">
+                                        Shipping Date: <t t-esc="doc.scheduled_date.strftime('%d-%m-%Y')"/>
+                                    </t>
+                                </t>
+                            </td>
+                        </tr>
+
+                        <!-- PO CUSTOMER -->
+                        <t t-if="doc.po_customer">
+                            <tr>
+                                <td colspan="2" style="text-align:left; padding-top:2px;">
+                                    PO: <t t-esc="doc.po_customer"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
 
 
                 </div>
