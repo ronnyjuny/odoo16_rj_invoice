@@ -302,30 +302,29 @@
                                 </tr>
                             </t>
                         </tbody>
-                        <t t-if="doc.no_seri">
-                            <div style="margin-top:5px;">
-                                NO SERI: <t t-esc="doc.no_seri"/>
-                            </div>
-                        </t>
-
-                        <t t-if="doc.keterangan">
-                            <div style="margin-top:5px;">
-                                KETERANGAN: <t t-esc="doc.keterangan"/>
-                            </div>
-                        </t>
                     </table>
 
-                    <!-- <t t-if="doc.no_seri">
-                        <div style="margin-top:5px;">
-                            NO SERI: <t t-esc="doc.no_seri"/>
-                        </div>
-                    </t>
+                    <t t-if="doc.no_seri or doc.keterangan">
+                        <table style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:5px;" border="1">
+                            <t t-if="doc.no_seri">
+                                <tr>
+                                    <td style="padding:6px; text-align:left;">
+                                        <strong>NO SERI:</strong>
+                                        <t t-esc="doc.no_seri"/>
+                                    </td>
+                                </tr>
+                            </t>
 
-                    <t t-if="doc.keterangan">
-                        <div style="margin-top:5px;">
-                            KETERANGAN: <t t-esc="doc.keterangan"/>
-                        </div>
-                    </t> -->
+                            <t t-if="doc.keterangan">
+                                <tr>
+                                    <td style="padding:6px; text-align:left;">
+                                        <strong>KETERANGAN:</strong>
+                                        <t t-esc="doc.keterangan"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </t>
 
                     <t t-if="(doc.no_polisi_id and doc.no_polisi_id.name) or (doc.driver_id and doc.driver_id.name)">
                         <table class="table-bordered" style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:8px;" border="1">
