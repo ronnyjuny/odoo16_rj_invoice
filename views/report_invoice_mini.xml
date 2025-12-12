@@ -27,9 +27,9 @@
                     }
                 </style>
 
-                <div class="page" style="font-size: 10pt; line-height: 1.3;">
+                <div class="page" style="font-size: 12pt; line-height: 1.3;">
                     <!-- ===================== HEADER ===================== -->
-                    <table class="no-border" style="font-size: 11pt;">
+                    <table class="no-border" style="font-size: 12pt;">
                         <tr>
                             <td class="no-border" style="width: 60%;">
 
@@ -130,18 +130,18 @@
                                 </t>
                                 <!-- No Invoice -->
                                 <t t-if="invoice.name">
-                                    <div style="font-size: 11pt;">
+                                    <div style="font-size: 12pt;">
                                         <t t-esc="invoice.name"/>
                                     </div>
                                 </t>
                                 <t t-if="invoice.invoice_date">
-                                    <div style="font-size: 11pt;">
+                                    <div style="font-size: 12pt;">
                                         Invoice Date: <t t-esc="invoice.invoice_date.strftime('%d/%m/%Y')"/>
                                     </div>
                                 </t>
 
                                 <t t-if="invoice.invoice_date_due">
-                                    <div style="font-size: 11pt;">
+                                    <div style="font-size: 12pt;">
                                         Term: <t t-esc="invoice.invoice_payment_term_id.name"/>
                                         /  Due Date: <t t-esc="invoice.invoice_date_due.strftime('%d/%m/%Y')"/>
                                     </div>
@@ -152,7 +152,7 @@
                                     and invoice.invoice_line_ids[0].sale_line_ids 
                                     and invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id
                                 ">
-                                    <div style="font-size: 11pt;">
+                                    <div style="font-size: 12pt;">
                                         Order Type: <t t-esc="invoice.invoice_line_ids[0].sale_line_ids[0].order_id.sale_order_type_id.name"/>
                                     </div>
                                 </t>
@@ -162,11 +162,11 @@
 
                     <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0;" />
 
-                    <table class="no-border" style="font-size: 11pt; width:100%;">
+                    <table class="no-border" style="font-size: 12pt; width:100%;">
                         <tr>
                             <td style="vertical-align: top; width: 90%;">
 
-                                <table class="no-border" style="font-size: 11pt; width:100%;">
+                                <table class="no-border" style="font-size: 12pt; width:100%;">
                                     <tr>
                                         <td style="padding:0; margin:0;">
                                             <strong>Kepada Yth:</strong>
@@ -231,7 +231,7 @@
                     </table>
 
 
-                    <table class="no-border" style="font-size: 11pt; width: 100%;">
+                    <table class="no-border" style="font-size: 12pt; width: 100%;">
                         <tr>
                             <t t-if="invoice.po_customer">
                                 <td style="width:40%;">PO: <t t-esc="invoice.po_customer"/></td>
@@ -249,7 +249,7 @@
                         </tr>
                     </table>
 
-                    <table style="font-size: 11pt; width:100%;">
+                    <table style="font-size: 12pt; width:100%;">
                         <thead>
                             <tr>
                                 <th style="width:4%;">No</th>
@@ -296,7 +296,7 @@
                         </tbody>
                     </table>
 
-                    <table style="width:100%; font-size:11pt; border-collapse:collapse; margin-top:5px;" border="1">
+                    <table style="width:100%; font-size:12pt; border-collapse:collapse; margin-top:5px;" border="1">
                         <t t-if="invoice.narration">
                             <tr>
                                 <td style="padding:6px;">
@@ -324,7 +324,7 @@
                         </t>
                     </table>
 
-                    <table class="no-border" style="margin-top: 7px; font-size: 11pt; width: 100%;">
+                    <table class="no-border" style="margin-top: 7px; font-size: 12pt; width: 100%;">
                         <tr>
                             <td style="width: 70%; vertical-align: top;">
                                 <table class="no-border" style="width:100%; text-align:center;">
@@ -385,7 +385,7 @@
                             </td>
                         </tr>
                     </table>
-                    <!-- <div style="font-size: 11pt;">
+                    <!-- <div style="font-size: 12pt;">
                         <t t-if="invoice.narration">
                             <div style="margin-bottom: 5px;">
                                 <span t-raw="invoice.narration"/>
@@ -410,7 +410,7 @@
 
                     <hr style="border: 0; border-top: 1px solid #000; margin: 3px 0; width:100%;" />
                     <t t-if="invoice.number_to_words">
-                        <div style="font-size: 11pt; ">
+                        <div style="font-size: 12pt; ">
                             <strong>Terbilang:</strong>
                             <t t-esc="invoice.number_to_words"/>
                         </div>
