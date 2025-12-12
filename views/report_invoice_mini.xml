@@ -12,7 +12,8 @@
                     }
                     body {
                         margin: 0;
-                        font-family: "Consolas", "Lucida Console", "Liberation Mono", monospace;
+                        <!-- font-family: "Consolas", "Lucida Console", "Liberation Mono", monospace; -->
+                        font-family: "FreeMono", "Courier New", monospace;
                     }
                     table {
                         border-collapse: collapse;
