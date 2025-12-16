@@ -193,7 +193,7 @@
                                 t-value="('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 Telp. %s' % shipping.phone) if shipping.phone else ''"/>
 
                             <t t-set="location"
-                                t-value="', '.join([str(x) for x in [city, state, zip_code, phone] if x])"/>
+                                t-value="' - '.join([str(x) for x in [city, state, zip_code, phone] if x])"/>
 
                             <t t-if="location">
                                 <tr><td style="padding:0; margin:0;"><t t-esc="location"/></td></tr>
