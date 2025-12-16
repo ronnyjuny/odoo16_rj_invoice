@@ -103,7 +103,7 @@
                                         </tr>
                                     </t>
 
-                                    <t t-set="parts" t-value="[
+                                    <!-- <t t-set="parts" t-value="[
                                         invoice_partner.city or '',
                                         invoice_partner.state_id.name if invoice_partner.state_id else '',
                                         invoice_partner.zip or ''
@@ -124,7 +124,24 @@
                                                 Telp. <t t-esc="invoice_partner.phone"/>
                                             </td>
                                         </tr>
+                                    </t> -->
+                                    <t t-set="parts" t-value="[
+                                        invoice_partner.city or '',
+                                        invoice_partner.state_id.name if invoice_partner.state_id else '',
+                                        invoice_partner.zip or '',
+                                        ('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telp. %s' % invoice_partner.phone) if invoice_partner.phone else ''
+                                    ]"/>
+
+                                    <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
+
+                                    <t t-if="clean_parts">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                <t t-raw="', '.join(clean_parts)"/>
+                                            </td>
+                                        </tr>
                                     </t>
+
                                 </table>
                             </td>
 
