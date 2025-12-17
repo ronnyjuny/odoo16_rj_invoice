@@ -199,7 +199,7 @@
                                             <td style="padding:0; margin:0;">
                                                 <t t-set="parts" t-value="[invoice.partner_id.city or '',
                                                                         invoice.partner_id.state_id.name if invoice.partner_id.state_id else '',
-                                                                        invoice.partner_id.zip or ''
+                                                                        invoice.partner_id.zip or '',
                                                                         ('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 Telp. %s' % invoice.partner_id.phone) if invoice.partner_id.phone else ''
                                                                         ]"/>
                                                 <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
