@@ -102,30 +102,8 @@
                                             </td>
                                         </tr>
                                     </t>
-
+                                    
                                     <!-- <t t-set="parts" t-value="[
-                                        invoice_partner.city or '',
-                                        invoice_partner.state_id.name if invoice_partner.state_id else '',
-                                        invoice_partner.zip or ''
-                                    ]"/>
-                                    <t t-set="clean_parts" t-value="[p for p in parts if p]"/>
-
-                                    <t t-if="clean_parts">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                <t t-out="', '.join(clean_parts)"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-
-                                    <t t-if="invoice_partner.phone">
-                                        <tr>
-                                            <td style="padding:0; margin:0;">
-                                                Telp. <t t-esc="invoice_partner.phone"/>
-                                            </td>
-                                        </tr>
-                                    </t> -->
-                                    <t t-set="parts" t-value="[
                                         invoice_partner.city or '',
                                         invoice_partner.state_id.name if invoice_partner.state_id else '',
                                         invoice_partner.zip or '',
@@ -140,7 +118,27 @@
                                                 <t t-raw="' - '.join(clean_parts)"/>
                                             </td>
                                         </tr>
+                                    </t> -->
+                                    <t t-set="location_parts" t-value="[
+                                        invoice_partner.city or '',
+                                        invoice_partner.state_id.name if invoice_partner.state_id else '',
+                                        invoice_partner.zip or ''
+                                    ]"/>
+
+                                    <t t-set="clean_location" t-value="[p for p in location_parts if p]"/>
+
+                                    <t t-set="phone_part"
+                                    t-value="('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Telp. %s' % invoice_partner.phone)
+                                                if invoice_partner.phone else ''"/>
+
+                                    <t t-if="clean_location or phone_part">
+                                        <tr>
+                                            <td style="padding:0; margin:0;">
+                                                <t t-raw="' - '.join(clean_location) + phone_part"/>
+                                            </td>
+                                        </tr>
                                     </t>
+
 
                                 </table>
                             </td>
